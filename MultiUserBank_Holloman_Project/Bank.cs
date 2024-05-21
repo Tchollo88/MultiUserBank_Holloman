@@ -33,10 +33,11 @@ namespace MultiUserBank_Holloman_Project
         {
             return _acBalance.ToString();
         }
-        //
-        public decimal SetBankBalance()
+
+        //Copies bankBalance to show in the main program.
+        public decimal ShowBankBalance
         {
-            return _bankBalance;
+            get { return _bankBalance; }
         }
 
         #endregion
@@ -45,12 +46,10 @@ namespace MultiUserBank_Holloman_Project
 
         /*Quality of Life Functions*/
 
-        //Converts strinbg value from array toi a decimal for mathing.
-        public decimal convertBalance(string Balance)
+        //Converts string value from array toi a decimal for mathing.
+        public void acBalSet(string Balance)
         {
-            decimal ConBal = decimal.Parse(Balance);
-            _acBalance = ConBal;
-            return ConBal;
+           _acBalance =  decimal.Parse(Balance);
         }
 
         //Converts negative amiount to a positive for message input.
@@ -64,11 +63,12 @@ namespace MultiUserBank_Holloman_Project
         /*Math Engines*/
 
         //Applies withdrawl math to the account, subtracting the wanded amount from the user's account total.
-        public string withdrawlBalance(string Withdrawl, string Balance)
+        public string withdrawlBalance(string Withdrawl)
         {
             string Check = "WD";
+            string Balance;
             decimal WD = decimal.Parse(Withdrawl);
-            decimal ConBal = convertBalance(Balance);
+            decimal ConBal = _acBalance;
             decimal BankBal = _bankBalance;
 
             ConBal = BankCheck(BankBal, ConBal, Check);
@@ -79,11 +79,12 @@ namespace MultiUserBank_Holloman_Project
         }
 
         //Applies deposit math to the account, add desired amount to the user's account total.
-        public string depositeBalance(string Deposite, string Balance)
+        public string depositeBalance(string Deposite)
         {
             string check = "DP";
+            string Balance;
             decimal DP = decimal.Parse(Deposite);
-            decimal ConBal = convertBalance(Balance);
+            decimal ConBal = _acBalance;
             decimal BankBal = _bankBalance;
 
             ConBal = BankCheck(BankBal, ConBal, check);
